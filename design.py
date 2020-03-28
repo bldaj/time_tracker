@@ -1,28 +1,20 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'qt/time_tracker/untitled.ui'
-#
-# Created by: PyQt5 UI code generator 5.10.1
-#
-# WARNING! All changes made in this file will be lost!
-
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(332, 136)
+        MainWindow.resize(260, 80)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.listWidget = QtWidgets.QListWidget(self.centralwidget)
-        self.listWidget.setObjectName("listWidget")
-        self.verticalLayout.addWidget(self.listWidget)
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
         self.startButton = QtWidgets.QPushButton(self.centralwidget)
         self.startButton.setObjectName("startButton")
-        self.verticalLayout.addWidget(self.startButton)
+        self.gridLayout.addWidget(self.startButton, 0, 0, 1, 1)
+        self.stopButton = QtWidgets.QPushButton(self.centralwidget)
+        self.stopButton.setObjectName("stopButton")
+        self.gridLayout.addWidget(self.stopButton, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -32,4 +24,4 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Time Tracker"))
         self.startButton.setText(_translate("MainWindow", "Start"))
-
+        self.stopButton.setText(_translate("MainWindow", "Stop"))
