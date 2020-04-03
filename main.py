@@ -4,16 +4,18 @@ from PyQt5 import (
     QtSql, QtWidgets
 )
 
+from consts import TITLE
 import design
+import sql_queries
 
 
-class App(QtWidgets.QMainWindow, design.Ui_MainWindow):
+class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
 
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.connect_db()
-        self.create_table()
+        self.create_tables()
         self.startButton.clicked.connect(self.start)
 
     def connect_db(self):
@@ -30,25 +32,46 @@ class App(QtWidgets.QMainWindow, design.Ui_MainWindow):
         if not db.open():
             raise Exception("Error opening database: {0}".format(db.lastError().text()))
 
-    def create_table(self):
-        query = """
-        CREATE TABLE IF NOT EXISTS tracker (
-        id integer PRIMARY KEY, 
-        datetime_start timestamp without time zone NOT NULL, 
-        datetime_stop timestamp without time zone
-        );
-        """
-        qt_query = QtSql.QSqlQuery()
-        qt_query.exec_(query)
+    def create_tables(self):
+        query = QtSql.QSqlQuery()
+        query.exec_(sql_queries.CREATE_TRACKER_TABLE)
+        query.exec_(sql_queries.CREATE_TASK_TABLE)
 
     def start(self):
         query = QtSql.QSqlQuery()
-        print(query.exec_("select * from tracker;"))
+        # print(query.exec_("select * from tracker;"))
+        self.close()
+        self.next = DataList()
+
+
+class DataList(QtWidgets.QMainWindow):
+
+    def __init__(self):
+        super().__init__()
+        self.title = TITLE
+        self.top = 600
+        self.left = 200
+        self.width = 500
+        self.height = 500
+
+        self.init_window()
+
+    def init_window(self):
+        self.button = QtWidgets.QPushButton("Ok", self)
+        self.button.move(100, 400)
+        self.button.clicked.connect(self.ok)
+
+        self.setWindowTitle(self.title)
+        self.setGeometry(self.top, self.left, self.width, self.height)
+        self.show()
+
+    def ok(self):
+        self.close()
 
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    window = App()
+    window = MainWindow()
     window.show()
     app.exec_()
 
