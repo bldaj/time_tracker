@@ -1,4 +1,4 @@
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
@@ -13,9 +13,9 @@ class Ui_MainWindow(object):
         self.stopButton = QtWidgets.QPushButton(self.centralwidget)
         self.stopButton.setGeometry(QtCore.QRect(120, 50, 111, 34))
         self.stopButton.setObjectName("stopButton")
-        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(50, 10, 181, 32))
-        self.lineEdit.setObjectName("lineEdit")
+        self.task_input = QtWidgets.QLineEdit(self.centralwidget)
+        self.task_input.setGeometry(QtCore.QRect(50, 10, 181, 32))
+        self.task_input.setObjectName("task_input")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(7, 10, 41, 31))
         self.label.setObjectName("label")
