@@ -4,7 +4,7 @@ CREATE_TRACKER_TABLE = """
     datetime_start timestamp without time zone NOT NULL, 
     datetime_stop timestamp without time zone
     );
-    """
+"""
 
 CREATE_TASK_TABLE = """
     CREATE TABLE IF NOT EXISTS task (
@@ -12,4 +12,9 @@ CREATE_TASK_TABLE = """
     task varchar(20) NOT NULL,
     description varchar(400)
     );
-    """
+"""
+
+
+INSERT_TASK = """
+    INSERT INTO task (task, description) VALUES(:task, :descr);
+"""
