@@ -10,6 +10,9 @@ import sql_queries
 
 
 class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
+    """
+    Main window which represents field to fill task on which I will work and button to start track time.
+    """
 
     def __init__(self):
         super().__init__()
@@ -38,13 +41,20 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         query.exec_(sql_queries.CREATE_TASK_TABLE)
 
     def start(self):
+        """
+        Callback on start button clicked event.
+        """
         query = QtSql.QSqlQuery()
+
         # print(query.exec_("select * from tracker;"))
         self.close()
         self.next = DataList()
 
 
 class DataList(QtWidgets.QMainWindow):
+    """
+    Represents main information from DB.
+    """
 
     def __init__(self):
         super().__init__()
