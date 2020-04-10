@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5 import (
-    QtSql, QtWidgets
+    QtCore, QtSql, QtWidgets
 )
 
 from consts import TITLE
@@ -44,9 +44,20 @@ class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
         """
         Callback on start button clicked event.
         """
-        query = QtSql.QSqlQuery()
+        qt_query = QtSql.QSqlQuery()
 
-        # print(query.exec_("select * from tracker;"))
+        task = self.task_input.text()
+        description = self.description_input.toPlainText() or None
+
+        if task:
+            qt_query.prepare(sql_queries.INSERT_TASK)
+
+            qt_query.bindValue(":task", QtCore.QVariant(task))
+            qt_query.bindValue(":descr", QtCore.QVariant(description))
+
+            res = qt_query.exec_()
+            print(qt_query.lastError().text())
+
         self.close()
         self.next = DataList()
 
