@@ -1,24 +1,25 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(249, 121)
+        MainWindow.resize(240, 200)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.startButton = QtWidgets.QPushButton(self.centralwidget)
-        self.startButton.setGeometry(QtCore.QRect(7, 50, 111, 34))
+        self.startButton.setGeometry(QtCore.QRect(10, 150, 111, 34))
         self.startButton.setObjectName("startButton")
         self.stopButton = QtWidgets.QPushButton(self.centralwidget)
-        self.stopButton.setGeometry(QtCore.QRect(120, 50, 111, 34))
+        self.stopButton.setGeometry(QtCore.QRect(123, 150, 111, 34))
         self.stopButton.setObjectName("stopButton")
         self.task_input = QtWidgets.QLineEdit(self.centralwidget)
-        self.task_input.setGeometry(QtCore.QRect(50, 10, 181, 32))
+        self.task_input.setGeometry(QtCore.QRect(10, 10, 221, 32))
         self.task_input.setObjectName("task_input")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(7, 10, 41, 31))
-        self.label.setObjectName("label")
+        self.description_input = QtWidgets.QTextEdit(self.centralwidget)
+        self.description_input.setGeometry(QtCore.QRect(10, 50, 221, 84))
+        self.description_input.setToolTipDuration(-1)
+        self.description_input.setObjectName("textEdit")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -29,4 +30,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Time Tracker"))
         self.startButton.setText(_translate("MainWindow", "Start"))
         self.stopButton.setText(_translate("MainWindow", "Stop"))
-        self.label.setText(_translate("MainWindow", "Task:"))
+        self.task_input.setPlaceholderText(_translate("MainWindow", "Task name"))
+        self.description_input.setToolTip(_translate("MainWindow", "Task description"))
+        self.description_input.setPlaceholderText(_translate("MainWindow", "Task description"))
