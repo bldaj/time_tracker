@@ -1,12 +1,8 @@
 from PyQt5 import QtSql
 
-db = QtSql.QSqlDatabase.addDatabase('QPSQL')
+from utils.db import db_connect
 
-db.setHostName('localhost')
-db.setPort(5432)
-db.setDatabaseName('time_tracker')
-db.setUserName('time_tracker')
-db.setPassword('password')
+db = db_connect()
 
 db.open()
 
