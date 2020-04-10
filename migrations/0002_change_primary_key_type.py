@@ -25,7 +25,7 @@ CREATE SEQUENCE task_seq MINVALUE 1;
 """
 
 change_task_id_type_query = """
-ALTER TABLE tracker 
+ALTER TABLE task 
 ALTER COLUMN id SET DEFAULT nextval('task_seq');
 """
 
