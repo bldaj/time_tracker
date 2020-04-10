@@ -6,7 +6,7 @@ from PyQt5 import (
 
 from consts import TITLE
 import design
-import sql_queries
+from utils import sql_queries
 
 
 class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
